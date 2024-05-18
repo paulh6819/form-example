@@ -1,0 +1,85 @@
+/* 
+The styles on the form don't matter. Style this however you want.
+*/
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/*
+This element will serve as our anchor point for the label. 
+*/
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+/*
+The styles on the input don't matter. Style this however you want.
+*/
+.input {
+  background-color: white;
+  border-radius: 8px;
+  border: 2px solid #65657b;
+  box-sizing: border-box;
+  color: black;
+  font-size: 18px;
+  padding: 4px;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: #646cff;
+  outline: 2px solid #646cff;
+}
+
+/* 
+Remove the placeholder text. We still want to use placeholders,
+for accessibility reasons, but we don't want to show them. 
+*/
+.input::placeholder {
+  display: none;
+  color: transparent;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*
+This is the label that will float above the input when the input.
+Since it is positioned absolutely, it will be removed from the 
+normal document flow and positioned relative to the div with the
+input-container class. 
+*/
+.label {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 10px;
+  pointer-events: none;
+  position: absolute;
+  transition: transform 200ms, color 200ms;
+  top: 4px;
+}
+
+/* 
+The first event here is just anytime the focus is on the input,
+the second event is when the input is not empty. This can happen
+when the user types something in the input and then clicks away
+to do something else, e.g. click on another input. 
+
+That fancy tilde (~) is the "Subsequent-sibling combinator" in CSS.
+It will select the element that is immediately preceded by the
+first element. In this case, the label is the subsequent sibling
+of the input.
+https://developer.mozilla.org/en-US/docs/Web/CSS/Subsequent-sibling_combinator
+
+In short, it allows us to change the style of one class based on
+the state of another class. In this case, we are changing the
+style of the label based on the state of the input.
+*/
+.input:focus ~ .label,
+.input:not(:placeholder-shown) ~ .label {
+  transform: translateY(-30px);
+  color: black;
+}
