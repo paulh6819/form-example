@@ -5,6 +5,12 @@ The styles on the form don't matter. Style this however you want.
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  color: black;
+  width: 320px;
+}
+
+.form p {
+  padding: 0 1rem;
 }
 
 /*
