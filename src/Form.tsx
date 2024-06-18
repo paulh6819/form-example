@@ -7,6 +7,7 @@ export function Form() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     console.log("Given email is: ", email);
+    console.log("Form submitted!");
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
